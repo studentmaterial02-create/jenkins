@@ -2,25 +2,32 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
-                git branch: 'master',
-                    url: 'https://github.com/Parkar/mca-pipe.git'
+                git branch: 'main',
+                    url: 'https://github.com/studentmaterial02-create/jenkins.git'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building the project'
+                echo 'Build stage running'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing the project'
+                echo 'Test stage running'
             }
         }
+    }
 
+    post {
+        success {
+            echo 'Pipeline SUCCESS'
+        }
+        failure {
+            echo 'Pipeline FAILED'
+        }
     }
 }
